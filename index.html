@@ -735,13 +735,7 @@ const applyCoupon = document.getElementById('applyCoupon');
 const payBtn = document.getElementById('payBtn');
 const payText = document.getElementById('payText');
 
-// Plan system
 
-
- {
-  currentPlan = plan;
-  updatePlanUI();
-}
 
 function updatePlanUI() {
   const isMonthly = currentPlan === 'monthly';
@@ -810,16 +804,15 @@ if (sumDisc.textContent !== '—') {
 }
 
   const options = {
-     key: "rzp_test_SYElqmz....",
+     key: "rzp_test_SYI7t0EHqD3abh
 
     amount: price * 100,
     currency: "INR",
 
     name: "Vedxant",
     description: currentPlan === 'monthly'
-      ? "Trading Ind
-      
-    icator (1 Month)"
+  ? "Trading Indicator (1 Month)"
+  : "Trading Indicator Lifetime Access",
       : "Trading Indicator Lifetime Access",
 
     handler: function (response) {
