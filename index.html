@@ -196,14 +196,14 @@
           <div class="mt-8 glass rounded-xl p-3 overflow-hidden">
             <div class="flex gap-8 whitespace-nowrap animate-marquee">
               <div class="flex items-center gap-6 opacity-80">
-                <span class="font-mono text-emerald-300">XAGUSD</span><span class="text-zinc-400">+0.12%</span>
+                <span class="font-mono text-emerald-300">EURUSD</span><span class="text-zinc-400">+0.12%</span>
                 <span class="font-mono text-emerald-300">GBPUSD</span><span class="text-zinc-400">-0.08%</span>
                 <span class="font-mono text-emerald-300">USDJPY</span><span class="text-zinc-400">+0.23%</span>
                 <span class="font-mono text-emerald-300">XAUUSD</span><span class="text-zinc-400">+0.51%</span>
                 <span class="font-mono text-emerald-300">BTCUSD</span><span class="text-zinc-400">-0.37%</span>
               </div>
               <div class="flex items-center gap-6 opacity-80" aria-hidden="true">
-                <span class="font-mono text-emerald-300">XAGUSD</span><span class="text-zinc-400">+0.12%</span>
+                <span class="font-mono text-emerald-300">EURUSD</span><span class="text-zinc-400">+0.12%</span>
                 <span class="font-mono text-emerald-300">GBPUSD</span><span class="text-zinc-400">-0.08%</span>
                 <span class="font-mono text-emerald-300">USDJPY</span><span class="text-zinc-400">+0.23%</span>
                 <span class="font-mono text-emerald-300">XAUUSD</span><span class="text-zinc-400">+0.51%</span>
@@ -223,12 +223,12 @@
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 17l4-6 3 4 5-9 4 6" stroke="#34d399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
                 <div>
-                  <div class="text-sm font-semibold">XAUUSD • 5m</div>
+                  <div class="text-sm font-semibold">EURUSD • 15m</div>
                   <div class="text-xs text-zinc-400">Smart Money View</div>
                 </div>
               </div>
               <div class="flex items-center gap-2 text-xs">
-                <span class="px-2 py-1 rounded-md bg-emerald-500/5 text-emerald-300 border border-emerald-400/30">Liquidity Sweep</span>
+                <span class="px-2 py-1 rounded-md bg-emerald-500/15 text-emerald-300 border border-emerald-400/30">Liquidity Sweep</span>
                 <span class="px-2 py-1 rounded-md bg-white/5 border border-white/10">BOS</span>
                 <span class="px-2 py-1 rounded-md bg-white/5 border border-white/10">Auto TP/SL</span>
               </div>
@@ -278,7 +278,7 @@
                   <text x="0" y="-16" fill="#a7f3d0" font-size="12">Liquidity Sweep →</text>
                 </g>
               </svg>
-              <div class="absolute bottom-2 right-2 text-[10px] font-mono text-zinc-500"></div>
+              <div class="absolute bottom-2 right-2 text-[10px] font-mono text-zinc-500">Demo visualization</div>
             </div>
 
             <!-- Floating badges -->
@@ -599,7 +599,7 @@
           </div>
           <div>
             <div class="font-bold leading-tight">Secure Checkout</div>
-            
+            <div class="text-xs text-zinc-400">Razorpay-style demo UI • No real charge</div>
           </div>
         </div>
         <button class="p-2 rounded-lg hover:bg-white/10" data-close aria-label="Close">
@@ -644,7 +644,7 @@
             <input id="coupon" class="flex-1 rounded-xl bg-black/40 border border-white/10 px-4 py-3 outline-none focus:border-emerald-400/50" placeholder="Coupon code (optional)">
             <button id="applyCoupon" class="rounded-xl px-4 py-3 bg-white/10 border border-white/10 font-semibold">Apply</button>
           </div>
-          
+          <div id="couponMsg" class="mt-2 text-xs text-emerald-300 hidden">Coupon applied: LAUNCH10 (demo)</div>
         </div>
 
         <!-- Summary -->
@@ -669,8 +669,33 @@
           <svg id="payIcon" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <span id="payText">Pay Securely</span>
         </button>
-        
-  
+        <div class="mt-3 flex items-center justify-center gap-3 text-[11px] text-zinc-500">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.5"/></svg>
+          Bank-grade encryption • Demo checkout only
+        </div>
+
+        <!-- Processing / Success -->
+        <div id="payState" class="hidden mt-5 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-4">
+          <div class="flex items-center gap-3">
+            <div id="paySpinner" class="h-6 w-6 rounded-full border-2 border-emerald-300/30 border-t-emerald-300 animate-spin"></div>
+            <div class="font-semibold" id="payStateText">Processing payment…</div>
+          </div>
+          <div id="successBlock" class="hidden mt-4">
+            <div class="flex items-center gap-3">
+              <div class="h-10 w-10 rounded-full bg-emerald-500/20 border border-emerald-400/40 grid place-items-center success">
+                <svg class="tick" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <div class="font-bold">Payment successful (demo)</div>
+                <div class="text-sm text-zinc-300">We’ve unlocked your access form.</div>
+              </div>
+            </div>
+            <a href="#get-access" data-close class="mt-4 inline-flex rounded-xl px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-black font-bold">Go to Access Form</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Toast -->
   <div id="toast" class="fixed bottom-5 left-1/2 -translate-x-1/2 hidden z-[80]">
@@ -719,125 +744,104 @@
     toggleMonthly.addEventListener('click', () => setPlan('monthly'));
     toggleLifetime.addEventListener('click', () => setPlan('lifetime'));
 
-    // Modal    
-     
-    // Elements
-const modal = document.getElementById('checkoutModal');
-const planName = document.getElementById('planName');
-const planPrice = document.getElementById('planPrice');
-const sumSub = document.getElementById('sumSub');
-const sumDisc = document.getElementById('sumDisc');
-const sumTotal = document.getElementById('sumTotal');
+    // Modal
+    const modal = document.getElementById('checkoutModal');
+    const payBtn = document.getElementById('payBtn');
+    const payText = document.getElementById('payText');
+    const payIcon = document.getElementById('payIcon');
+    const payState = document.getElementById('payState');
+    const payStateText = document.getElementById('payStateText');
+    const successBlock = document.getElementById('successBlock');
+    const paySpinner = document.getElementById('paySpinner');
+    const planName = document.getElementById('planName');
+    const planPrice = document.getElementById('planPrice');
+    const sumSub = document.getElementById('sumSub');
+    const sumDisc = document.getElementById('sumDisc');
+    const sumTotal = document.getElementById('sumTotal');
+    const coupon = document.getElementById('coupon');
+    const applyCoupon = document.getElementById('applyCoupon');
+    const couponMsg = document.getElementById('couponMsg');
 
-const coupon = document.getElementById('coupon');
-const applyCoupon = document.getElementById('applyCoupon');
-
-const payBtn = document.getElementById('payBtn');
-const payText = document.getElementById('payText');
-
-
-
-function updatePlanUI() {
-  const isMonthly = currentPlan === 'monthly';
-  const name = isMonthly ? 'Monthly — 30 Days' : 'Lifetime — Unlimited';
-  const price = isMonthly ? 4999 : 14999;
-
-  planName.textContent = name;
-  planPrice.textContent = '₹' + price.toLocaleString('en-IN');
-  sumSub.textContent = '₹' + price.toLocaleString('en-IN');
-  sumTotal.textContent = '₹' + price.toLocaleString('en-IN');
-  sumDisc.textContent = '—';
-}
-
-// Modal open/close
-function openModal() {
-  updatePlanUI();
-  modal.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  modal.classList.add('hidden');
-  document.body.style.overflow = '';
-}
-
-// CTA buttons
-document.querySelectorAll('[data-cta]').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const plan = btn.getAttribute('data-plan');
-    if (plan) setPlan(plan);
-    openModal();
-  });
-});
-
-// Close modal
-modal.addEventListener('click', (e) => {
-  if (e.target.hasAttribute('data-close')) closeModal();
-});
-
-// Coupon
-applyCoupon.addEventListener('click', () => {
-  if (!coupon.value.trim()) return;
-
-  let price = currentPlan === 'monthly' ? 4999 : 14999;
-
-  let discount = Math.round(price * 0.10); // 10% discount
-
-  sumDisc.textContent = '- ₹' + discount.toLocaleString('en-IN');
-  sumTotal.textContent = '₹' + (price - discount).toLocaleString('en-IN');
-});
-
-    // Payment simulation         
-    payBtn.addEventListener('click', () => {
-
-  // 🔴 ये यहाँ डाल
-  if (typeof Razorpay === "undefined") {
-    alert("Payment system not loaded. Refresh page.");
-    return;
-  }
-
-  let price = currentPlan === 'monthly' ? 4999 : 14999;
-
-if (sumDisc.textContent !== '—') {
-  const discount = Math.round(price * 0.10);
-  price = price - discount;
-}
-
-  const options = {
-     key: "rzp_test_SYI7t0EHqD3abh
-
-    amount: price * 100,
-    currency: "INR",
-
-    name: "Vedxant",
-    description: currentPlan === 'monthly'
-  ? "Trading Indicator (1 Month)"
-  : "Trading Indicator Lifetime Access",
-      : "Trading Indicator Lifetime Access",
-
-    handler: function (response) {
-      alert("Payment Successful: " + response.razorpay_payment_id);
-    },
-
-    prefill: {
-      name: "",
-      email: "",
-      contact: ""
-    },
-
-    notes: {
-      plan: currentPlan
-    },
-
-    theme: {
-      color: "#34d399"
+    function openModal() {
+      updatePlanUI();
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
     }
-  };
+    function closeModal() {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      resetPayState();
+    }
+    function updatePlanUI() {
+      const isMonthly = currentPlan === 'monthly';
+      const name = isMonthly ? 'Monthly — 30 Days' : 'Lifetime — Unlimited';
+      const price = isMonthly ? 4999 : 14999;
+      planName.textContent = name;
+      planPrice.textContent = '₹' + price.toLocaleString('en-IN');
+      sumSub.textContent = '₹' + price.toLocaleString('en-IN');
+      sumTotal.textContent = '₹' + price.toLocaleString('en-IN');
+      sumDisc.textContent = '—';
+      couponMsg.classList.add('hidden');
+      payBtn.disabled = false;
+      payText.textContent = 'Pay Securely';
+    }
+    function resetPayState() {
+      payState.classList.add('hidden');
+      successBlock.classList.add('hidden');
+      paySpinner.classList.remove('hidden');
+      payStateText.textContent = 'Processing payment…';
+    }
 
-  const rzp = new Razorpay(options);
-  rzp.open();
+    // Open modal from any CTA
+    document.querySelectorAll('[data-cta]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const plan = btn.getAttribute('data-plan');
+        if (plan) setPlan(plan);
+        openModal();
+      });
+    });
+    // Close handlers
+    modal.addEventListener('click', (e) => {
+      if (e.target.hasAttribute('data-close')) closeModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+    });
 
-});
+    // Coupon demo
+    applyCoupon.addEventListener('click', () => {
+      if (!coupon.value.trim()) return;
+      const price = currentPlan === 'monthly' ? 4999 : 14999;
+      const discount = Math.round(price * 0.10);
+      sumDisc.textContent = '- ₹' + discount.toLocaleString('en-IN');
+      sumTotal.textContent = '₹' + (price - discount).toLocaleString('en-IN');
+      couponMsg.classList.remove('hidden');
+    });
+
+    // Payment simulation
+    let paying = false;
+    payBtn.addEventListener('click', () => {
+      if (paying) return;
+      paying = true;
+      payBtn.disabled = true;
+      payState.classList.remove('hidden');
+      payText.textContent = 'Processing…';
+      payIcon.classList.add('opacity-50');
+      // Simulate steps
+      setTimeout(() => {
+        payStateText.textContent = 'Authorizing…';
+      }, 900);
+      setTimeout(() => {
+        payStateText.textContent = 'Finalizing…';
+      }, 1800);
+      setTimeout(() => {
+        paySpinner.classList.add('hidden');
+        successBlock.classList.remove('hidden');
+        payStateText.textContent = 'Payment successful (demo)';
+        paying = false;
+      }, 2600);
+    });
+
     // Access form toast
     const toast = document.getElementById('toast');
     const toastText = document.getElementById('toastText');
@@ -859,6 +863,5 @@ if (sumDisc.textContent !== '—') {
     // Initialize
     setPlan('lifetime');
   </script>
-</body><script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</body>
 </html>
-</html> 
